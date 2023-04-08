@@ -1,0 +1,119 @@
+﻿@model Doctor
+
+
+
+
+       
+   
+
+
+
+<div class="row justify-content-between">
+    <div class="col-4">
+<div class="card" style="width: 18rem;">
+            <div class="card-header - text-center  ">
+
+               
+
+        schedule
+                <partial name="_notices" />
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Work  From : @Model.schedule.StartWork</li>
+                <li class="list-group-item">  To : @Model.schedule.EndWork</li>
+        <li class="list-group-item"> ToDay  : @DateTime.Now.DayOfWeek</li>
+        <li class="list-group-item"> vacation : @Model.schedule.dayofWeek</li>
+
+    </ul>
+</div>
+    </div>
+    <div class="col-7">
+
+<form method="get" action="">
+    <label for="startDate">Start date:</label>
+            <input type="date" name="startDate" id="startDate" value="">
+
+    <label for="endDate">End date:</label>
+            <input type="date" name="endDate" id="endDate" value="">
+            <br />
+    <button type="submit" class="btn btn-primary " >Filter</button>
+</form>
+    </div>
+</div>
+</div>
+<table class="table table-bordered table-striped " style="width:95% ">
+    <thead>
+        <tr>
+            <th>
+                Patient Name
+            </th>
+            <th>
+                Patient Phone
+            </th>
+            <th>
+                Patient Gender 
+            </th>
+            <th>
+                Medical History
+            </th>
+            <th>
+                birthDate
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                StartAppointment
+            </th>
+
+            
+            <th>
+                EndAppointment
+            </th>
+           
+        
+            </tr>
+
+        
+    </thead>
+    <tbody>
+        
+        
+
+            @foreach (var item in Model.AppointmentPatient)
+            {
+                <tr>
+                <td width="50%">@item.NamePatient</td>
+           
+                <td width="50%">@item.PhonePatient</td>
+            
+                <td width="50%">@item.GenderPatient</td>
+           
+                <td width="50%">@item.MedicalHistory</td>
+            
+                <td width="50%">@item.birthDate</td>
+           
+                <td width="50%">@item.Date</td>
+           
+                <td width="50%">@item.StartAppointment</td>
+           
+                <td width="50%">@item.EndAppointment</td>
+            </tr>
+            }
+         
+                
+                
+           
+
+        
+
+    </tbody>
+
+</table>
+
+<div class="col-10 text-end">
+<a asp-controller="Doctor" asp-action="index" class="btn btn-primary">
+    
+    Back
+</a>
+<div

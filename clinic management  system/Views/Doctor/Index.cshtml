@@ -1,0 +1,32 @@
+﻿@model List<Doctor>
+<h2> Doctors </h2>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th class="text-center">
+                Doctor Name 
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+              <td width="50%" class="text-center">DR \ @item.Name</td>
+                <td class="text-center">
+                    <a asp-controller="Doctor" asp-action="DoctorId" asp-route-Id="@item.Id" class="btn btn-primary">
+
+                        schedule
+                       
+                    </a>
+                </td>
+        </tr>
+            
+        }
+
+    </tbody>
+
+ </table>

@@ -1,0 +1,102 @@
+﻿@model AppointmentViewModel
+
+<form method="post">
+
+    <div class="border p-3 mt-4">
+        <div class="row pb-3">
+            <h2 class="text-primary"> Delete Appointmen</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+
+
+
+        <div class="mb-3">
+            <label asp-for="NamePatient">Patient Name </label>
+            <input type="text" class="form-control" asp-for="NamePatient" />
+            <span asp-validation-for="NamePatient" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhonePatient"> Patient Phone</label>
+            <input type="text" class="form-control" asp-for="PhonePatient" />
+            <span asp-validation-for="PhonePatient" class="text-danger"></span>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="GenderPatient">Patient Gender </label>
+            <input type="text" class="form-control" asp-for="GenderPatient" />
+            <span asp-validation-for="GenderPatient" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="MedicalHistory">Medical History</label>
+            <textarea class="form-control" asp-for="MedicalHistory" rows="4"></textarea>
+            <span asp-validation-for="MedicalHistory" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="birthDate">birth Date</label>
+            <input type="text" class="form-control" asp-for="birthDate" />
+            <span asp-validation-for="birthDate" class="text-danger"></span>
+
+        </div>
+
+
+
+      @*  <div class="mb-3">
+            <label asp-for="Date">Date</label>
+            <input type="text" class="form-control" asp-for="Date" value="" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+
+        </div>*@
+        <div class="mb-3">
+            @Html.LabelFor(m => m.StartAppointment)
+            @Html.EditorFor(m => m.StartAppointment, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => m.StartAppointment)
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="EndAppointment">End </label>
+            @Html.DisplayFor(m => m.EndAppointment)
+            <span asp-validation-for="EndAppointment" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="DoctorId">Doctor </label>
+            <select class="form-control" asp-for="DoctorId" asp-items="@(new SelectList(Model.Doctors, "Id", "Name"))">
+                <option></option>
+            </select>
+            <span asp-validation-for="DoctorId" class="text-danger"></span>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <button type="submit" class="btn btn-primary"> <i class="bi bi-check"></i>Delete Appointment </button>
+        <a class="btn btn-secondary" asp-action="index" asp-controller="Appointment"> <i class="bi bi-x"></i>Back To List oF Appointment </a>
+    </div>
+</form>
+@section scripts{
+
+    <partial name="_ValidationScriptsPartial">
+
+
+        <script>
+            $('#birthDate').datepicker({
+
+                autoclose: true,
+                startDate: new Date('1940'),
+                endDate: new Date()
+            });
+
+        </script>
+    }

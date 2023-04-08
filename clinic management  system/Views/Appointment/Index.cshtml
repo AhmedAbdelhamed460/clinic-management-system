@@ -1,0 +1,90 @@
+﻿@model IEnumerable< AppointmentPatient>
+<partial name="_noticesApp" />
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Appointments  <i class="bi bi-pencil-square"></i></h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Appointment" asp-action="create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>
+                create New Appointment
+            </a>
+        </div>
+    </div>
+
+
+
+    <br /> <br />
+    <table class="table table-bordered table-striped" style="width:70% " >
+
+    <thead>
+        <tr>
+            <th>
+                 Patient  Name
+            </th>
+            <th>
+                 Patient Phone 
+            </th>
+             <th>
+                    Gender Patient
+            </th>
+                <th>
+                    Medical History
+                </th>
+                <th>
+                    Birth Date Patient
+                </th>
+                 <th>
+                    Date 
+                    </th>
+                <th>
+                    Start
+                </th>
+                
+                <th>
+                    End 
+                </th>
+                <th>
+                            Doctor Name
+                </th>
+                <th>
+
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+                <tr>
+            <td >@item.NamePatient </td>
+            <td >@item.PhonePatient </td>
+            <td >@item.GenderPatient </td>
+            <td >@item.MedicalHistory </td>
+                    <td >@item.birthDate  </td>
+             <td >@item.Date </td>
+            <td >@item.StartAppointment </td>
+            <td >@item.EndAppointment </td>
+             <td > Dr \ @item.Doctor.Name </td>
+                   
+                    <td >
+                        <a asp-controller="Appointment" asp-action="Edit" asp-route-Id="@item.Id" class="btn btn-primary" style="font-size:12px">
+
+                            Edit
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a asp-action="Delete" asp-controller="Appointment" class="btn btn-danger" asp-route-Id="@item.Id" style="font-size:12px">
+
+                            Delete
+                            <i class="bi bi-trash"></i>
+                        </a>
+
+
+
+                    </td>
+
+                </tr>
+            }
+            
+    </tbody>
